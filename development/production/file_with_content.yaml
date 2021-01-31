@@ -1,0 +1,10 @@
+---
+  - name: Create file with content
+    hosts: prod
+    tasks:   
+      - name: Create file with content
+        copy:
+          dest: /tmp/ansible_file
+          content: |
+            line 1
+            line 2

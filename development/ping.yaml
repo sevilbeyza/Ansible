@@ -1,0 +1,7 @@
+---
+  - name: pinging dev Servers   #playbook name 
+    hosts: dev                  #host to run
+    tasks:                      #what playbook is doing 
+      - name: ping Hosts        #task name
+        ping:                   #module
+          #argumetns always start 2 spaces next from module

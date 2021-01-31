@@ -1,0 +1,8 @@
+all:
+  hosts:
+    localhosts:
+  children:
+    web:
+      hosts:
+        ubuntu:
+          ansible_host: 165.227.79.154

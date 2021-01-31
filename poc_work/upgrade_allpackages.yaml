@@ -1,0 +1,6 @@
+---
+- name: Upgrade all packages on sthe Ubuntu server
+  hosts: web #ubuntu server
+  tasks: 
+    - name: Upgrade all packages on servers
+      apt: upgrade=dist force_apt_get=yes

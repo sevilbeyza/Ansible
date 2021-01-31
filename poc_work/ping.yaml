@@ -1,0 +1,8 @@
+---
+- name: pinging web Servers   
+  hosts: web                  
+  tasks:                      
+
+    - name: ping Hosts        
+      ping:                   
+          

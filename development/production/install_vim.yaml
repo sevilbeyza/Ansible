@@ -1,0 +1,17 @@
+---
+  - name: Instal vim package in Remote Servers
+    hosts: prod
+    tasks:      
+      - name: Instal vim package on CentOS
+        yum:
+          name: vim
+          state: latest
+        when: 
+          - ansible_facts['distribution'] == "CentOS"
+      
+      - name: Instal vim package on Ubuntu
+        apt:
+          name: vim
+          state: latest
+        when: 
+          - ansible_facts['distribution'] == "Ubuntu"

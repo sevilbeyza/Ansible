@@ -1,0 +1,12 @@
+---
+  - name: Memory free 
+    hosts: dev                 
+    tasks:                       
+      - name: Memory free       
+        shell: 
+          cmd: free -h  
+        register: output            #this is a module   we saved the output   in "output" veriable           
+          
+      
+      - debug:
+          var: output              #lets read to output

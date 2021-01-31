@@ -1,0 +1,12 @@
+---
+all:   #all the groups
+  hosts: #butun hostlar 
+
+  children: #named groups yani gruplar- childrenin altindakiler grup olyor
+    prod: #group name
+      hosts:
+        centos:        #key
+          ansible_host: 134.122.6.165
+          ansible_port: 55500
+        ubuntu:     #@values belong to key , iki bosluk ilerden basliyr
+          ansible_host: 165.227.79.154

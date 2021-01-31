@@ -1,0 +1,10 @@
+---
+  - name: Copy Index.html to remote servers
+    hosts: centos                  
+    tasks:                     
+      - name: Copy file       
+        copy:  
+          src: /tmp/index.html
+          dest: /tmp/ans
+
+         

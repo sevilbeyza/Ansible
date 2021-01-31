@@ -1,0 +1,13 @@
+---
+all:
+  hosts:   
+    server1:     #if you want any ungup put under this hosts here we have un defined one 
+      ansible_host: 165.227.79.154    #ungrouped
+    localhost:    #ungrouped     
+  children:
+    dev:
+      hosts:
+        centos:
+          ansible_host: 134.122.6.165
+        ubuntu:
+          ansible_host: 165.227.79.154

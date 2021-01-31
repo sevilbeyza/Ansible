@@ -1,0 +1,12 @@
+---
+  - name: Disk Usage 
+    hosts: all                  
+    tasks:                       
+      - name: Disk free       
+        shell: 
+          cmd: df -h  
+        register: output            #this is a module   we saved the output   in "output" veriable           
+          
+      
+      - debug:
+          var: output              #lets read to output

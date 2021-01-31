@@ -1,0 +1,10 @@
+---
+- name: Check host memory availability
+  hosts: web
+  tasks: 
+    - name: memory check
+      assert:
+        that:
+          - ansible_memtotal_mb >= 128
+        msg: "'hosy memory' must be at list 128"  
+        
