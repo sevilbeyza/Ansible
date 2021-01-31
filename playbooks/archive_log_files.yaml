@@ -1,0 +1,10 @@
+---
+- name: Archive Log Files where size > 50M
+  ignore_errors: yes
+  hosts: all
+  tasks: 
+    - name: Install gzip 
+      package: 
+        name: gzip 
+    - name: Zip log file
+      shell: 'find / -size +50M 2>/dev/null -name "*.log" -exec gzip -v9 {} \;'
