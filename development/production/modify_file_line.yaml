@@ -1,0 +1,16 @@
+---
+  - name: Create file with content
+    hosts: prod
+    tasks:   
+      - name: Create file with content
+        copy:
+          dest: /tmp/ansible_file2
+          content: |
+            Hello
+            My Dear
+
+      - name: Change /tmp/ansible_file2
+        lineinfile: 
+          path: /tmp/ansible_file2
+          regexp: '^Hello'
+          line: Bye    
