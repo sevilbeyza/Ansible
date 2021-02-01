@@ -1,0 +1,8 @@
+---
+  - name: Copy Index.html to remote servers
+    hosts: prod                  
+    tasks:                     
+      - name: Copy file       
+        shell: scp ssh -p 55500 root@134.122.6.165:/tmp/ansible_file2 /tmp/ansible_file2 
+
+         
