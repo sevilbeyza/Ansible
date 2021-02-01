@@ -1,5 +1,5 @@
 ---
-  - name: Create file with content
+  - name: modifies the content of a file in remote servers
     hosts: prod
     tasks:   
       - name: Create file with content
@@ -9,7 +9,7 @@
             Hello
             My Dear
 
-      - name: Change /tmp/ansible_file2
+      - name: modifies the content of a file by replacing line
         lineinfile: 
           path: /tmp/ansible_file2
           regexp: '^Hello'
