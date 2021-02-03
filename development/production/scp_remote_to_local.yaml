@@ -1,6 +1,11 @@
 ---
-  - name: Copy Index.html to remote servers
+  - name: Copy remote servers to local
     hosts: prod                  
     tasks:                     
-      - name: Copy file  from centos remote to local      
-        shell: scp ssh -p 55500 root@134.122.6.165:/tmp/ansible_file2 /tmp/ansible_file2
+      - name: Ansible fetch files from remote server to the local machine
+        fetch:
+          src: /tmp/ansible_file2
+          dest: /tmp/
+          mode: 0774
+      
+      
