@@ -1,0 +1,35 @@
+---
+  - name: Instal package in Remote Servers
+    hosts: prod
+    gather_facts: yes
+    tasks:      
+      - name: Instal  epel-release
+        when: ansible_distribution == "CentOS"
+        ignore_errors: True   #make error this make skiped given error will show IGNORE WITH PURPULE COLOR
+        yum:
+          name: 
+          - epel-release
+        register: task1_result  
+
+
+      
+      - name: Instal  packages on CentOS
+        when: 
+        - ansible_distribution == "CentOS"
+        - task1_result is succeeded
+        yum:    
+           name:
+           - htop   #htop relay epel release
+           - vim
+           - curl
+           state: present
+
+      - name: Instal  packages on Ubuntu
+        when: ansible_distribution == "Ubuntu"
+        apt:
+           name:
+           - htop
+           - vim
+           - curl
+           state: present     
+   

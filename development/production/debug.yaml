@@ -1,0 +1,16 @@
+---
+  - name : Retrieve HostName of Remote Server
+    gather_facts: no
+    vars:
+      myvariable: "Hello"
+      variable2: "this is variable 2"
+    hosts: ubuntu
+    tasks:
+      - name: ping hosts
+        ping:
+      - name: Retrive host name 
+        debug:  
+          msg: '{{myvariable}}'  
+
+      - debug:  
+          msg: '{{myvariable}} {{variable2}}' 

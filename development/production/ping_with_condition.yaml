@@ -1,0 +1,15 @@
+---
+  - name: pinging dev Servers   
+    hosts: prod                 
+    tasks:                      
+      - name: ping centos Hosts        
+        ping:                   
+        when: 
+          - ansible_facts['distribution'] == "CentOS"
+
+      - name: ping Ubuntu Hosts        
+        ping:                   
+        when: 
+          - ansible_facts['distribution'] == "Ubuntu"
+     
+

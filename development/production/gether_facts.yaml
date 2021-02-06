@@ -1,0 +1,10 @@
+---
+  - name : Retrieve HostName of Remote Server
+    gather_facts: yes
+    hosts: all
+    tasks:
+      - name: ping hosts
+        ping:
+      - name: Retrive Distrubition and major version
+        debug:  
+          msg: 'Hostname = {{ansible_distribution}} and Version = {{ansible_distribution_major_version}}' 

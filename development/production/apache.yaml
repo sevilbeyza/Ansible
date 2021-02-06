@@ -1,0 +1,46 @@
+---
+  - name: Install Apache on all servers
+    hosts: all
+    gather_facts: yes
+    tasks:
+      
+      - name: Install Apache on CentOS7
+        when: 
+        - ansible_facts['distribution'] == "CentOS"
+        - ansible_facts['distribution_major_version'] == "7"
+        yum: 
+          name: 
+          - httpd
+          state: latest
+        register: apache_installed_centos
+      
+      
+      - name: Start Apache on CentOS7
+        when: 
+        - ansible_facts['distribution'] == "CentOS"
+        - ansible_facts['distribution_major_version'] == "7"
+        - apache_installed_centos is success
+        systemd:
+          name: httpd
+          state: started
+          enabled: yes
+      
+      
+      - name: Install Apache on Ubuntu
+        when: 
+        - ansible_facts['distribution'] == "Ubuntu"
+        apt:
+          name:
+          - apache2
+          state: latest
+        register: apache_installed_ubuntu
+      
+      
+      - name: Start Apache on Ubuntu
+        when: 
+        - ansible_facts['distribution'] == "Ubuntu"
+        - apache_installed_ubuntu is success
+        systemd:
+          name: apache2.service
+          state: started
+          enabled: yes
