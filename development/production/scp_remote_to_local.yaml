@@ -4,7 +4,7 @@
     tasks:                     
       - name: Ansible fetch files from remote server to the local machine
         fetch:
-          src: /tmp/ansible_file2
+          src: /tmp/ansible_file
           dest: /tmp/
           mode: 0774
       

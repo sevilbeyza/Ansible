@@ -1,0 +1,10 @@
+---
+- name: Change file permission
+  hosts: prod
+  gather_facts:  yes
+  tasks:
+    - name: change permission /tmp/testfile2 to 0666
+      file:
+        path: /tmp/testfile
+        mode: '0666'
+      when: ansible_facts['hostname'] == "ubuntu"

@@ -1,0 +1,12 @@
+---
+  - name: Fetch file from Remote Server
+    hosts: prod
+    gather_facts: yes
+    tasks:
+      - name: Fetch /tmp/testfile from ubuntu Server 
+        when: 
+        - ansible_facts['distribution'] == "Ubuntu" #this one is comming ansible meta data
+        - ansible_facts['hostname'] == "ubuntu"     #this oneis comming from Digital Ocion we have ubuntu name
+        fetch:
+          src: /tmp/testfile
+          dest: /root/

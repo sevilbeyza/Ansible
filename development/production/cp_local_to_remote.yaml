@@ -1,0 +1,14 @@
+---
+- name: Ansible Copy file  Local to Remote host
+  hosts: all
+  gather_facts:  yes
+  tasks:
+    - name: copying file with playbook local to Ubuntu remote server
+      copy:
+        src: /tmp/testfile
+        dest: /tmp/
+      when: 
+        - ansible_facts['distribution'] == "Ubuntu"
+      owner: apache
+      group: apache        
+      mode: 0644

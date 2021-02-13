@@ -1,0 +1,37 @@
+---
+  - name: Multiple Tasks
+    hosts: all
+    gather_facts: yes
+    tasks:
+      - name: Ping Hosts
+        when: "'prod' in group_names"
+        ping:
+
+
+      - name: Install vim, wget and curl packages on CentOS
+        when: ansible_facts['distribution'] == "CentOS"
+        yum:
+          name:
+          - vim
+          - wget
+          - curl
+
+
+      - name: Install vim, wget and curl packages on Ubuntu
+        when: ansible_facts['distribution'] == "Ubuntu"
+        apt:
+          name:
+          - vim
+          - wget
+          - curl 
+
+      - name: Add user 'amy'  'anna' 'lisa' on CentOS
+        when: ansible_facts['distribution'] == "CentOS" 
+        user:
+          name: "{{ item }}"    #we call LOOPING TASK
+          state: present
+          generate_ssh_key: yes
+        with_items:
+          - amy
+          - anna
+          - lisa  

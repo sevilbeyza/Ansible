@@ -1,15 +1,13 @@
 ---
   - name: pinging dev Servers   
-    hosts: prod                 
+    hosts: dev 
+    gather_facts: no               
     tasks:                      
-      - name: ping centos Hosts        
-        ping:                   
+      - name: ping Servers, only if group "prod" is defined in inventory file    
         when: 
-          - ansible_facts['distribution'] == "CentOS"
-
-      - name: ping Ubuntu Hosts        
+        - "'dev' in group_names"
         ping:                   
-        when: 
-          - ansible_facts['distribution'] == "Ubuntu"
+        
      
 
+# -  ansible_facts['distribution'] == "Ubuntu"   #for this line need getter_facts  YES
